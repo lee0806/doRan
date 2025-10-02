@@ -61,26 +61,13 @@ export const postCategories: PostCategory[] = [
     icon: "📚",
     color: "#0F9D58",
   },
+
   {
-    id: "family",
-    name: "가족",
-    description: "가족 간의 사랑과 이해",
-    icon: "👨‍👩‍👧‍👦",
-    color: "#EA4335",
-  },
-  {
-    id: "relationship",
-    name: "연인",
-    description: "연인 관계의 고민과 조언",
-    icon: "💕",
-    color: "#E91E63",
-  },
-  {
-    id: "friend",
-    name: "친구",
-    description: "친구 관계의 문제와 해결",
-    icon: "👥",
-    color: "#9C27B0",
+    id: "worry",
+    name: "고민",
+    description: "일상 속 다양한 고민과 이야기",
+    icon: "📚",
+    color: "#0F9D58",
   },
 ];
 

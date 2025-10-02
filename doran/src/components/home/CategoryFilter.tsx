@@ -22,125 +22,45 @@ export default function CategoryFilter({
   activeCategory,
   onCategorySelect,
 }: CategoryFilterProps) {
-  /**
-   * 카테고리 버튼의 스타일을 동적으로 생성하는 함수
-   * @param category 카테고리 객체
-   * @param isActive 현재 활성화 상태 여부
-   */
-  const getCategoryButtonStyle = (
-    category: PostCategory,
-    isActive: boolean
-  ) => {
-    if (isActive) {
-      return {
-        backgroundColor: category.color,
-        color: "white",
-        boxShadow: `0 4px 12px ${category.color}40`,
-      };
-    }
-    return {
-      backgroundColor: "white",
-      color: "var(--gray-600)",
-      border: "1px solid var(--gray-200)",
-    };
-  };
-
-  /**
-   * 전체 버튼의 스타일을 생성하는 함수
-   * @param isActive 현재 활성화 상태 여부
-   */
-  const getAllButtonStyle = (isActive: boolean) => {
-    if (isActive) {
-      return {
-        background:
-          "linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%)",
-        color: "white",
-        boxShadow: "0 4px 12px var(--primary-200)",
-      };
-    }
-    return {
-      backgroundColor: "white",
-      color: "var(--gray-600)",
-      border: "1px solid var(--gray-200)",
-    };
-  };
-
   return (
-    <div className="py-xl">
-      {/* 카테고리 필터 제목 섹션 */}
-      <div className="mb-lg">
-        <h2 className="text-lg font-bold text-gray-900 mb-xs">
-          카테고리별 이야기
-        </h2>
-        <p className="text-sm text-secondary">
-          관심있는 주제의 따뜻한 이야기를 찾아보세요
-        </p>
-      </div>
-
-      {/* 스크롤 가능한 카테고리 버튼 목록 */}
-      <div className="flex space-md overflow-x-auto scrollbar-hide pb-sm">
-        {/* 전체 보기 버튼 */}
-        <button
-          onClick={() => onCategorySelect(null)}
-          className="flex-shrink-0 flex items-center px-lg py-md rounded-full font-semibold text-sm transition-all duration-300 hover:scale-105 animate-scale-in"
-          style={getAllButtonStyle(activeCategory === null)}
-          aria-label="모든 카테고리 보기"
-        >
-          <span className="mr-xs">🌟</span>
-          전체
-        </button>
-
-        {/* 개별 카테고리 버튼들 */}
-        {categories.map((category, index) => {
-          const isActive = activeCategory === category.id;
-
-          return (
+    <div className="p-4">
+      <nav aria-label="카테고리 필터">
+        <ul className="flex gap-6">
+          {/* 전체 탭 */}
+          <li>
             <button
-              key={category.id}
-              onClick={() => onCategorySelect(category.id)}
-              className={`
-                flex-shrink-0 flex items-center px-lg py-md rounded-full 
-                font-semibold text-sm transition-all duration-300 
-                hover:scale-105 animate-scale-in
-                ${isActive ? "shadow-lg" : "hover:shadow-md"}
-              `}
-              style={{
-                ...getCategoryButtonStyle(category, isActive),
-                animationDelay: `${index * 0.1}s`,
-              }}
-              aria-label={`${category.name} 카테고리 보기`}
+              onClick={() => onCategorySelect(null)}
+              className={`pb-2 text-base font-medium transition-colors ${
+                activeCategory === null
+                  ? "text-gray-900 border-b-2 border-gray-900"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
             >
-              <span
-                className="mr-xs text-base"
-                role="img"
-                aria-label={category.name}
-              >
-                {category.icon}
-              </span>
-              {category.name}
-
-              {/* 활성화된 카테고리에 체크 아이콘 표시 */}
-              {isActive && (
-                <span className="ml-xs animate-scale-in">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M9 12l2 2 4-4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              )}
+              전체
             </button>
-          );
-        })}
-      </div>
+          </li>
+          {categories.map((category) => {
+            const isActive = activeCategory === category.id;
+            return (
+              <li key={category.id}>
+                <button
+                  onClick={() => onCategorySelect(category.id)}
+                  className={`pb-2 text-base font-medium transition-colors ${
+                    isActive
+                      ? "text-gray-900 border-b-2 border-gray-900"
+                      : "text-gray-500 hover:text-gray-700"
+                  }`}
+                >
+                  {category.name}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
-      {/* 선택된 카테고리 정보 표시 영역 */}
       {activeCategory && (
-        <div className="mt-lg animate-slide-up">
+        <div className="mt-6">
           {(() => {
             const selectedCategory = categories.find(
               (cat) => cat.id === activeCategory
@@ -149,21 +69,19 @@ export default function CategoryFilter({
 
             return (
               <div
-                className="p-lg rounded-xl border-l-4"
+                className="p-4 rounded-xl border-l-4"
                 style={{
                   backgroundColor: `${selectedCategory.color}10`,
                   borderLeftColor: selectedCategory.color,
                 }}
               >
-                <div className="flex items-center mb-sm">
-                  <span className="text-2xl mr-sm">
-                    {selectedCategory.icon}
-                  </span>
+                <div className="flex items-center mb-2">
+                  <span className="text-2xl mr-2">{selectedCategory.icon}</span>
                   <h3 className="font-bold text-gray-900">
                     {selectedCategory.name} 이야기
                   </h3>
                 </div>
-                <p className="text-sm text-secondary leading-relaxed">
+                <p className="text-sm text-gray-500 leading-relaxed">
                   {selectedCategory.description}
                 </p>
               </div>

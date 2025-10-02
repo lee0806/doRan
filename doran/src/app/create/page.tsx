@@ -1,5 +1,6 @@
 "use client";
 
+// 글 작성 페이지
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Card from "@/components/common/Card";

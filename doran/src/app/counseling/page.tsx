@@ -1,5 +1,6 @@
 "use client";
 
+// 상담 페이지
 import { useState } from "react";
 import Card from "@/components/common/Card";
 import Button from "@/components/common/Button";
