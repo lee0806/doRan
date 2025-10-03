@@ -1,19 +1,21 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 interface HeaderProps {
   /** 검색어 입력 시 호출되는 콜백 함수 */
   onSearch?: (query: string) => void;
   /** 마이 페이지 버튼 클릭 시 호출되는 콜백 함수 */
-  onMyPageOpen?: () => void;
 }
 
-export default function Header({ onSearch, onMyPageOpen }: HeaderProps) {
+export default function Header({ onSearch }: HeaderProps) {
   // 🔍 검색어 상태 관리
   const [searchQuery, setSearchQuery] = useState("");
   // 🎯 검색 모드 상태 (검색창 확장/축소)
   const [isSearchMode, setIsSearchMode] = useState(false);
+
+  const router = useRouter();
 
   // 검색 제출
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -39,14 +41,20 @@ export default function Header({ onSearch, onMyPageOpen }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200 z-50">
+    <header className="bg-gray-50  w-full mx-auto max-w-5xl justify-center items-center z-50">
       <div className="px-4 py-4">
         {!isSearchMode ? (
           /* 🏠 일반 헤더 모드 */
           <div className="flex items-center justify-between">
             {/* 브랜드 영역 */}
             <div className="flex-1">
-              <h1 className="text-2xl font-bold">doRan</h1>
+              <h1
+                className="text-2xl font-bold"
+                onClick={() => router.push("/")}
+                style={{ cursor: "pointer" }}
+              >
+                doRan
+              </h1>
               <p className="text-gray-500 text-sm mt-1 leading-tight">
                 따뜻한 소통이 시작되는 곳
               </p>
@@ -105,7 +113,7 @@ export default function Header({ onSearch, onMyPageOpen }: HeaderProps) {
               {/* 마이 페이지 */}
               <button
                 type="button"
-                onClick={onMyPageOpen}
+                onClick={() => router.push("/pages/MyPage")}
                 aria-label="마이 페이지"
                 className="inline-flex items-center justify-center h-9 w-9 rounded-xl text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-gray-400"
               >

@@ -3,9 +3,9 @@ import React from "react";
 export default function PostCard() {
   return (
     <>
-      <div className="flex justify-center">
+      <div className="grid justify-center">
         <div className="max-w-md w-full bg-white shadow-md rounded-2xl p-4 m-4">
-          <div className="flex items-center mb-4 justify-center bg-gray-200 h-60">
+          <div className="flex items-center w-full mb-4 justify-center bg-gray-200 h-60 ">
             <div>이미지가 들어갈 자리입니다.</div>
           </div>
           <h2 className="text-lg font-bold text-gray-900 mb-2">
