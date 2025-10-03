@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Header from "@/components/MainPage/Header";
 import CategoryFilter from "@/components/MainPage/CategoryFilter";
+import PostCard from "@/components/MainPage/PostCard";
 
 export default function Home() {
   // 🔍 상태 관리 - 검색 쿼리
@@ -22,9 +23,10 @@ export default function Home() {
     <div className="min-h-screen bg-secondary">
       {/* 🔝 상단 헤더 영역 */}
       <Header onSearch={handleSearch} />
-
       {/* 🗂 카테고리 필터 영역 */}
       <CategoryFilter />
+      {/* 📰 게시물 리스트 영역 */}
+      <PostCard />
     </div>
   );
 }

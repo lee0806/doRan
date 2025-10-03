@@ -5,11 +5,11 @@ import React, { useState } from "react";
 interface HeaderProps {
   /** 검색어 입력 시 호출되는 콜백 함수 */
   onSearch?: (query: string) => void;
-  /** 필터 버튼 클릭 시 호출되는 콜백 함수 */
-  onFilterOpen?: () => void;
+  /** 마이 페이지 버튼 클릭 시 호출되는 콜백 함수 */
+  onMyPageOpen?: () => void;
 }
 
-export default function Header({ onSearch, onFilterOpen }: HeaderProps) {
+export default function Header({ onSearch, onMyPageOpen }: HeaderProps) {
   // 🔍 검색어 상태 관리
   const [searchQuery, setSearchQuery] = useState("");
   // 🎯 검색 모드 상태 (검색창 확장/축소)
@@ -77,30 +77,6 @@ export default function Header({ onSearch, onFilterOpen }: HeaderProps) {
                 </svg>
               </button>
 
-              {/* 필터 버튼 */}
-              <button
-                type="button"
-                onClick={onFilterOpen}
-                aria-label="필터 설정"
-                className="inline-flex items-center justify-center h-9 w-9 rounded-xl text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-gray-400"
-              >
-                {/* filter icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5"
-                >
-                  <path d="M3 6h18" />
-                  <path d="M7 12h10" />
-                  <path d="M10 18h4" />
-                </svg>
-              </button>
-
               {/* 알림 버튼 + 배지 */}
               <button
                 type="button"
@@ -124,6 +100,29 @@ export default function Header({ onSearch, onFilterOpen }: HeaderProps) {
                 <span className="absolute -top-1 -right-1 z-10 pointer-events-none w-5 h-5 bg-red-500 text-white text-[10px] leading-none rounded-full flex items-center justify-center font-bold">
                   3
                 </span>
+              </button>
+
+              {/* 마이 페이지 */}
+              <button
+                type="button"
+                onClick={onMyPageOpen}
+                aria-label="마이 페이지"
+                className="inline-flex items-center justify-center h-9 w-9 rounded-xl text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-gray-400"
+              >
+                {/* user/profile icon */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
               </button>
             </div>
           </div>
