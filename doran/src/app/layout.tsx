@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import BottomNavigation from "@/components/common/BottomNavigation";
 
 export const metadata: Metadata = {
   title: "도란 - 따뜻한 소통 커뮤니티",
@@ -28,7 +27,6 @@ export default function RootLayout({
       </head>
       <body className="bg-[var(--background)] text-[var(--text-primary)] pb-20">
         <main className="min-h-screen">{children}</main>
-        <BottomNavigation />
       </body>
     </html>
   );

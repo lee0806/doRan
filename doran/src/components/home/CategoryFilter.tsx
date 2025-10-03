@@ -1,57 +1,50 @@
+"use client";
+
 import React from "react";
-import { PostCategory } from "@/types";
 
-/**
- * 카테고리 필터 컴포넌트의 Props 타입 정의
- */
-interface CategoryFilterProps {
-  /** 카테고리 목록 */
-  categories: PostCategory[];
-  /** 현재 활성화된 카테고리 ID */
-  activeCategory: string | null;
-  /** 카테고리 선택 시 호출되는 콜백 함수 */
-  onCategorySelect: (categoryId: string | null) => void;
-}
+// zustand 스토어
+import { useCategoryStore } from "@/store/categoryStore";
 
-/**
- * 현대적인 카테고리 필터 컴포넌트
- * 토스, 배민 스타일의 세련된 탭 디자인을 구현
- */
-export default function CategoryFilter({
-  categories,
-  activeCategory,
-  onCategorySelect,
-}: CategoryFilterProps) {
+// 타입 및 상수
+import { CategoryKey, CATEGORY_LABELS } from "@/types";
+
+export default function CategoryFilter() {
+  // 📱 Zustand를 사용한 카테고리 상태 관리
+  const selected = useCategoryStore((s) => s.selected); // 선택된 카테고러
+  const set = useCategoryStore((s) => s.set); // 카테고리 선택 함수
+
+  // 카테고리 목록
+  const categories: CategoryKey[] = [
+    "all",
+    "general",
+    "school",
+    "career",
+    "worry",
+  ];
+
+  // 카테고리 라벨 매핑
+  const LABELS = CATEGORY_LABELS;
+
   return (
     <div className="p-4">
       <nav aria-label="카테고리 필터">
         <ul className="flex gap-6">
-          {/* 전체 탭 */}
-          <li>
-            <button
-              onClick={() => onCategorySelect(null)}
-              className={`pb-2 text-base font-medium transition-colors ${
-                activeCategory === null
-                  ? "text-gray-900 border-b-2 border-gray-900"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
-            >
-              전체
-            </button>
-          </li>
+          {/* 카테고리 버튼들 생성 */}
           {categories.map((category) => {
-            const isActive = activeCategory === category.id;
+            const isActive = selected === category; // 활성화 상태는 선택된 카테고리가 현재 카테고리가 같은지 확인 후 맞을 때 활성화
             return (
-              <li key={category.id}>
+              <li key={category}>
+                {" "}
+                {/* 카테고리 리스트 생성 */}
                 <button
-                  onClick={() => onCategorySelect(category.id)}
+                  onClick={() => set(category)} // 클릭하면 카테고리 선택 함수 호출
                   className={`pb-2 text-base font-medium transition-colors ${
                     isActive
                       ? "text-gray-900 border-b-2 border-gray-900"
                       : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
-                  {category.name}
+                  {LABELS[category]}
                 </button>
               </li>
             );
@@ -59,30 +52,18 @@ export default function CategoryFilter({
         </ul>
       </nav>
 
-      {activeCategory && (
+      {selected !== "all" && (
         <div className="mt-6">
           {(() => {
-            const selectedCategory = categories.find(
-              (cat) => cat.id === activeCategory
-            );
+            const selectedCategory = categories.find((cat) => cat === selected);
             if (!selectedCategory) return null;
-
             return (
-              <div
-                className="p-4 rounded-xl border-l-4"
-                style={{
-                  backgroundColor: `${selectedCategory.color}10`,
-                  borderLeftColor: selectedCategory.color,
-                }}
-              >
-                <div className="flex items-center mb-2">
-                  <span className="text-2xl mr-2">{selectedCategory.icon}</span>
-                  <h3 className="font-bold text-gray-900">
-                    {selectedCategory.name} 이야기
-                  </h3>
-                </div>
+              <div className="p-4 rounded-xl border border-gray-200 bg-gray-50">
+                <h3 className="font-bold text-gray-900 mb-1">
+                  {LABELS[selectedCategory]} 이야기
+                </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  {selectedCategory.description}
+                  선택한 카테고리에 해당하는 글을 보여줍니다.
                 </p>
               </div>
             );
