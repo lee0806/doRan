@@ -33,7 +33,7 @@ export default function CategoryFilter() {
   const LABELS = CATEGORY_LABELS;
 
   return (
-    <div className="p-4">
+    <div className="p-4 w-full mx-auto max-w-5xl">
       <nav aria-label="카테고리 필터" className="flex justify-between">
         <ul className="flex gap-6">
           {/* 카테고리 버튼들 생성 */}
@@ -47,7 +47,7 @@ export default function CategoryFilter() {
                   onClick={() => set(category)} // 클릭하면 카테고리 선택 함수 호출
                   className={`pb-2 text-base font-medium transition-colors ${
                     isActive
-                      ? "text-gray-900 border-b-2 border-gray-900"
+                      ? "text-purple-700 border-b-2 border-purple-700"
                       : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
