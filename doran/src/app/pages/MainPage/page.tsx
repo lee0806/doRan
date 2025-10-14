@@ -2,9 +2,9 @@
 
 // 메인 페이지
 import { useState } from "react";
-import Header from "@/components/MainPage/Header";
-import CategoryFilter from "@/components/MainPage/CategoryFilter";
-import PostCard from "@/components/MainPage/PostCard";
+import Header from "@/app/components/MainPage/Header";
+import CategoryFilter from "@/app/components/MainPage/CategoryFilter";
+import PostCard from "@/app/components/MainPage/PostCard";
 
 export default function Home() {
   // 🔍 상태 관리 - 검색 쿼리
