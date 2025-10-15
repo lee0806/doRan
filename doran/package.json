@@ -9,19 +9,39 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@milkdown/core": "^7.17.1",
+    "@milkdown/plugin-history": "^7.17.1",
+    "@milkdown/plugin-listener": "^7.17.1",
+    "@milkdown/preset-commonmark": "^7.17.1",
+    "@milkdown/react": "^7.17.1",
+    "@milkdown/theme-nord": "^7.17.1",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tiptap/extension-heading": "^3.6.6",
+    "@tiptap/extension-link": "^3.6.6",
+    "@tiptap/extension-placeholder": "^3.6.6",
+    "@tiptap/react": "^3.6.6",
+    "@tiptap/starter-kit": "^3.6.6",
+    "@uiw/react-markdown-preview": "^5.1.5",
+    "@uiw/react-md-editor": "^4.0.8",
+    "next": "15.5.4",
+    "prosemirror-commands": "^1.7.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.4"
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "tiptap-markdown": "^0.9.0",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
-    "@eslint/eslintrc": "^3"
-  }
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@10.18.3+sha512.bbd16e6d7286fd7e01f6b3c0b3c932cda2965c06a908328f74663f10a9aea51f1129eea615134bf992831b009eabe167ecb7008b597f40ff9bc75946aadfb08d"
 }
