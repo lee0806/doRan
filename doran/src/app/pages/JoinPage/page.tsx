@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import JoinMainSection from "@/app/components/JoinPage/JoinMainSection";
+import SelectionMainSection from "@/app/components/JoinPage/SelectionMainSection";
 import SocialLogin from "@/app/components/JoinPage/SocialLogin";
 
 /**
@@ -11,7 +13,9 @@ import SocialLogin from "@/app/components/JoinPage/SocialLogin";
  */
 export default function JoinPage() {
   return (
-    <div className="relative min-h-screen bg-gray-50">
+    <div className="relative h-screen bg-gray-50 flex-col justify-center items-center">
+      <JoinMainSection />
+      <SelectionMainSection />
       <SocialLogin />
     </div>
   );
