@@ -1,12 +1,21 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 
 export default function PostResult() {
+  const router = useRouter();
+
   return (
     <>
       <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 flex justify-between items-center z-50">
-        <div className="ml-2 text-l text-gray-500 hover:text-gray-700 active:text-gray-900 cursor-pointer">
+        <button
+          type="button"
+          onClick={() => router.back()}
+          className="ml-2 text-l text-gray-500 hover:text-gray-700 active:text-gray-900 cursor-pointer"
+        >
           뒤로 가기
-        </div>
+        </button>
         <div className="items-center">
           <button
             type="button"
