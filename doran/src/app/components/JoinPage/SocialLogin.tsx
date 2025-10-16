@@ -5,7 +5,7 @@ export default function JoinPage() {
   return (
     <>
       {/* 하단 소셜 로그인 영역 (화면 하단 고정 + 안전 영역 고려) */}
-      <footer className="fixed inset-x-0 bottom-4  z-50">
+      <footer className="fixed inset-x-0 bottom-4  z-50 overflow-hidden">
         <div className="mx-auto w-full max-w-md px-6 py-4 space-y-3">
           {/* Kakao */}
           <Link

@@ -25,7 +25,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
-      <body className="bg-gray-50 text-[var(--text-primary)] pb-20">
+      <body className="bg-gray-50 text-[var(--text-primary)]">
         <main className="min-h-[90vh] min-w-[360px] mx-auto">{children}</main>
       </body>
     </html>

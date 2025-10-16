@@ -13,7 +13,7 @@ import SocialLogin from "@/app/components/JoinPage/SocialLogin";
  */
 export default function JoinPage() {
   return (
-    <div className="relative h-screen bg-gray-50 flex-col justify-center items-center">
+    <div className="relative h-screen bg-gray-50 flex-col justify-center items-center overflow-hidden">
       <JoinMainSection />
       <SelectionMainSection />
       <SocialLogin />
